@@ -138,7 +138,6 @@ async def secretInput(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
             await update.message.reply_text(f"{caeserShift.encryptString(messageText)}", reply_markup=reply_markup) 
     except:
         await update.message.reply_text("Something went wrong 😿 Please try again!", parse_mode='html') 
-    
  
     return ConversationHandler.END
 
@@ -304,7 +303,7 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     return ConversationHandler.END
 
 def main() -> None:
-    application = Application.builder().token(os.getenv("TELEGRAM_KEY")).build()
+    application = Application.builder().token(str(os.getenv("TELEGRAM_KEY"))).build()
 
     startHandler = CommandHandler("start", start)
 
